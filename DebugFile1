@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <assert.h>
+
+#define MAJOR_COLORS 5
+#define MINOR_COLORS 5
+
+int printColorMap() {
+    const char* majorColor[MAJOR_COLORS] = {"White", "Red", "Black", "Yellow", "Violet"};
+    const char* minorColor[MINOR_COLORS] = {"Blue", "Orange", "Green", "Brown", "Slate"};
+    int pairNumber = 0;
+    for(int i = 0; i < MAJOR_COLORS; i++) {
+        for(int j = 0; j < MINOR_COLORS; j++) {
+            printf("%2d | %-6s | %-6s\n", pairNumber, majorColor[i], minorColor[j]);
+            pairNumber++;
+        }
+    }
+    return pairNumber;
+}
+
+int main() {
+    int result = printColorMap();
+    assert(result == MAJOR_COLORS * MINOR_COLORS);
+    printf("All is well (maybe!)\n");
+    return 0;
+}
