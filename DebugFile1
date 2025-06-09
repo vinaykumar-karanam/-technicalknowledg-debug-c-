@@ -18,10 +18,7 @@ int printColorMap() {
     static const char* minorColor[MINOR_COLORS] = {"Blue", "Orange", "Green", "Brown", "Slate"};
     
     int pairNumber = 1; 
-    // Print table header for clarity
     printf("Pair | Major   | Minor   \n");
-    printf("-------------------------\n");
-
   
     for(int i = 0; i < MAJOR_COLORS; i++) {
         for(int j = 0; j < MINOR_COLORS; j++) {
