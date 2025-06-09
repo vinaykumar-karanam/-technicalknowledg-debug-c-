@@ -1,25 +1,47 @@
 #include <stdio.h>
 #include <assert.h>
 
+// Define the number of major and minor colors
 #define MAJOR_COLORS 5
 #define MINOR_COLORS 5
 
+/**
+ * @brief Prints the color code mapping table for major and minor colors.
+ * 
+ * This function prints a table that lists all possible combinations of major and minor colors,
+ * along with a unique pair number for each combination. The pair number starts from 1.
+ * 
+ * @return int The total number of color pairs printed.
+ */
 int printColorMap() {
-    const char* majorColor[MAJOR_COLORS] = {"White", "Red", "Black", "Yellow", "Violet"};
-    const char* minorColor[MINOR_COLORS] = {"Blue", "Orange", "Green", "Brown", "Slate"};
-    int pairNumber = 0;
+    static const char* majorColor[MAJOR_COLORS] = {"White", "Red", "Black", "Yellow", "Violet"};
+    static const char* minorColor[MINOR_COLORS] = {"Blue", "Orange", "Green", "Brown", "Slate"};
+    
+    int pairNumber = 1; 
+    // Print table header for clarity
+    printf("Pair | Major   | Minor   \n");
+    printf("-------------------------\n");
+
+  
     for(int i = 0; i < MAJOR_COLORS; i++) {
         for(int j = 0; j < MINOR_COLORS; j++) {
-            printf("%2d | %-6s | %-6s\n", pairNumber, majorColor[i], minorColor[j]);
-            pairNumber++;
+            printf("%4d | %-7s| %-7s\n", pairNumber, majorColor[i], minorColor[j]);
+            pairNumber++; 
         }
     }
-    return pairNumber;
+   
+    return (pairNumber - 1);
 }
 
+/**
+ * @brief Main function to test the color map printing.
+ * 
+ * Calls printColorMap() and asserts that the number of pairs matches the expected value.
+ * Prints a confirmation message if all is well.
+ */
 int main() {
-    int result = printColorMap();
-    assert(result == MAJOR_COLORS * MINOR_COLORS);
-    printf("All is well (maybe!)\n");
+    int result = printColorMap(); 
+    assert(result == MAJOR_COLORS * MINOR_COLORS); 
+    printf("All is well (maybe!)\n"); 
     return 0;
 }
